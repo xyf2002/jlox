@@ -1,10 +1,11 @@
+package com.craftinginterpreters.lox;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 
 public class Lox {
@@ -30,7 +31,6 @@ public class Lox {
     }
 
 
-
     //> run-file
     private static void runFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
@@ -46,7 +46,6 @@ public class Lox {
     }
 
 
-
     static void runtimeError(RuntimeError error) {
         System.err.println(error.getMessage() +
                 "\n[line " + error.token.line + "]");
@@ -54,13 +53,14 @@ public class Lox {
     }
 
 
-
     private static void runPrompt() throws IOException {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
-        for (;;) {
+        for (; ; ) {
             System.out.print("> ");
             String line = reader.readLine();
             if (line == null) break;
             run(line);
         }
+    }
+}
